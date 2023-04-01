@@ -46,7 +46,7 @@ router.post(
             id: user.id
         }
     }
-    const authToken = jwt.sign(data, JWT_SECRET)
+    const authToken = jwt.sign(data,String(process.env.JWT_SECRET))
     res.json({authToken})
     //  send auth token instead of user details
     //   res.json(user);

@@ -2,11 +2,11 @@
 
 const connectToMongo = require('./db')
 const express = require('express')
-
 connectToMongo();
-
+const cors = require('cors');
 const app = express()
 const port = 5000
+app.use(cors());
 
 // MiddleWare 
 app.use(express.json())
