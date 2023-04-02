@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 const NavBar = () => {
   // Use location is used for making navbar ele active 
   // let location = useLocation();
@@ -9,6 +9,11 @@ const NavBar = () => {
   // ${location.pathname === '/about' ? "active" : ""}`} // inside navbar className
 
   // Instead of useLocation use Nav link tag
+  let history =  useNavigate();
+  const handleLogout = () =>{
+    localStorage.removeItem('token');
+    history("/login")
+  }
   return (
 
     <div><nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,13 +30,15 @@ const NavBar = () => {
             <li className="nav-item">
               <NavLink className={`nav-link `} to="/about">About</NavLink>
             </li>
-
           </ul>
-          <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit">Search</button>
-          </form>
-        </div>
+          {!localStorage.getItem('token') ? <form className="d-flex"> 
+                    <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
+                    <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
+                    </form>: <button onClick={handleLogout} className="btn btn-primary">Log Out</button>}
+      
+      
+      
+       </div>
       </div>
     </nav></div>
   )
