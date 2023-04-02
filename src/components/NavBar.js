@@ -9,8 +9,8 @@ const NavBar = () => {
   // ${location.pathname === '/about' ? "active" : ""}`} // inside navbar className
 
   // Instead of useLocation use Nav link tag
-  let history =  useNavigate();
-  const handleLogout = () =>{
+  let history = useNavigate();
+  const handleLogout = () => {
     localStorage.removeItem('token');
     history("/login")
   }
@@ -31,14 +31,14 @@ const NavBar = () => {
               <NavLink className={`nav-link `} to="/about">About</NavLink>
             </li>
           </ul>
-          {!localStorage.getItem('token') ? <form className="d-flex"> 
-                    <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
-                    <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
-                    </form>: <button onClick={handleLogout} className="btn btn-primary">Log Out</button>}
-      
-      
-      
-       </div>
+          {!localStorage.getItem('token') ? <form className="d-flex">
+            <Link className="btn btn-primary mx-1" to="/login" role="button">Login</Link>
+            <Link className="btn btn-primary mx-1" to="/signup" role="button">Signup</Link>
+          </form> : <button onClick={handleLogout} className="btn btn-primary">Log Out</button>}
+
+
+
+        </div>
       </div>
     </nav></div>
   )

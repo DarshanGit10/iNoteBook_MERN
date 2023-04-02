@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Singup = (props) => {
+const SignUp = (props) => {
 
 
   const [cred, setCred] = useState({username:"",  email: "", password: "",cpassword :""  })
@@ -37,7 +37,7 @@ const Singup = (props) => {
 
   return (
     <div className='container'>
-      <h2>Sign up: </h2>
+      <h2>SignUp up: </h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <div className="mb-3">
@@ -62,4 +62,4 @@ const Singup = (props) => {
   )
 }
 
-export default Singup
+export default SignUp
